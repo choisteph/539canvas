@@ -35,13 +35,20 @@
     ctx.fill();
   }
 
-  window.addEventListener('mousemove', function (e) {
+window.addEventListener('mousemove', function (e) {
     x = e.pageX
     y = e.pageY
     // console.log(e.pageX);
     // console.log(e.pageY);
     draw();
-  })
+})
+
+window.addEventListener("touchmove", touchDraw);
+function touchDraw(e){
+  x = e.touches[0].screenX;
+  y = e.touches[0].screenY;
+}
+
 
 window.addEventListener("keydown", colorChange);
 function colorChange(e){
@@ -103,11 +110,6 @@ function canvasSize(e){
 
 }
 
-window.addEventListener("touchmove", touchDraw);
-function touchDraw(e){
-  x = e.touches[0].screenX;
-  y = e.touches[0].screenY;
-}
 
 
   </script>
