@@ -49,8 +49,10 @@ window.addEventListener('mousemove', function (e) {
 
 window.addEventListener("touchstart", touchDraw);
 function touchDraw(e){
-  x = e.touches[0].screenX;
-  y = e.touches[0].screenY;
+  mouse.x = e.pageX;
+  mouse.y = e.pageY;
+  handlerPos.x = e.pageX;
+  handlerPos.y = e.pageY;
 }
 
 
