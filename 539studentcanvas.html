@@ -31,12 +31,6 @@
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
     ctx.fill();
   }
-  function touchDraw(){
-    ctx.touchstart();
-    ctx.fillStyle=color;
-    ctx.arc(x,y,radius, 0,2*Math.PI);
-    ctx.fill();
-  }
 
   window.addEventListener('mousemove', function (e) {
     x = e.pageX
@@ -101,13 +95,17 @@ function clearCanvas(e){
 
 window.addEventListener("resize", canvasSize);
 function canvasSize(e){
-  c.width = window.innerWidth*0.80;
-  c.height = window.innerHeight*0.80;
+  c.width = window.innerWidth*0.7;
+  c.height = window.innerHeight*0.7;
 
 }
 
 window.addEventListener("touchmove", touchDraw);
-
+function touchDraw(){
+  ctx.fillStyle=color;
+  ctx.arc(x,y,radius, 0,2*Math.PI);
+  ctx.fill();
+}
 
 
 
