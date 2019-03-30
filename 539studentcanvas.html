@@ -7,11 +7,14 @@
       canvas{
         border: 1px solid black;
       }
+      canvas:hover{
+        cursor: crosshair;
+      }
       </style>
   </head>
   <body>
     <canvas id="canvas" width="800px" height="500px">
-      alt text stuff
+      the canvas
       </canvas>
 
 
@@ -77,7 +80,7 @@ function sizeChange(e){
   };
 
   if (e.keyCode===40){
-    radius = radius - 5;
+    radius = radius - 3;
     if (radius <= 2){
       radius = 2;
       alert ("min size");
@@ -101,17 +104,10 @@ function canvasSize(e){
 }
 
 window.addEventListener("touchmove", touchDraw);
-function touchDraw(){
-  ctx.fillStyle=color;
-  ctx.arc(x,y,radius, 0,2*Math.PI);
-  ctx.fill();
-    x = e.pageX
-    y = e.pageY
-    // console.log(e.pageX);
-    // console.log(e.pageY);
-    draw();
+function touchDraw(e){
+  x = e.touches[0].screenX;
+  y = e.touches[0].screenY;
 }
-
 
 
   </script>
