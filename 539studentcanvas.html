@@ -47,16 +47,10 @@ window.addEventListener('mousemove', function (e) {
     draw();
 })
 
-window.addEventListener("touchstart", touchStart);
-function touchStart(e){
-  x = e.pageX;
-  y = e.pageY;
-  draw();
-}
 window.addEventListener("touchmove", touchDraw);
 function touchDraw(e){
-  x = e.pageX;
-  y = e.pageY;
+  x = e.touches[0].clientX;
+  y = e.touches[0].clientY;
   draw();
 }
 
