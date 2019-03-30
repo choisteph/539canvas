@@ -47,14 +47,19 @@ window.addEventListener('mousemove', function (e) {
     draw();
 })
 
-window.addEventListener("touchstart", touchDraw);
-function touchDraw(e){
-  mouse.x = e.pageX;
-  mouse.y = e.pageY;
-  handlerPos.x = e.pageX;
-  handlerPos.y = e.pageY;
+window.addEventListener("touchstart", touchStart);
+function touchStart(e){
+  x = e.pageX;
+  y = e.pageY;
   draw();
 }
+window.addEventListener("touchmove", touchDraw);
+function touchDraw(e){
+  x = e.pageX;
+  y = e.pageY;
+  draw();
+}
+
 
 
 window.addEventListener("keydown", colorChange);
