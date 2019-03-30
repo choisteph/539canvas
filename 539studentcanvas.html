@@ -10,7 +10,7 @@
       </style>
   </head>
   <body>
-    <canvas id="canvas" width="500px" height="500px">
+    <canvas id="canvas" width="800px" height="500px">
       alt text stuff
       </canvas>
 
@@ -105,6 +105,11 @@ function touchDraw(){
   ctx.fillStyle=color;
   ctx.arc(x,y,radius, 0,2*Math.PI);
   ctx.fill();
+    x = e.pageX
+    y = e.pageY
+    // console.log(e.pageX);
+    // console.log(e.pageY);
+    draw();
 }
 
 
