@@ -16,6 +16,10 @@
     <canvas id="canvas" width="800px" height="500px">
       the canvas
       </canvas>
+    <div>
+    <input type="color" id="colorpick" value="#f8f8f8">
+    <label>the colorpicker</label>
+  </div>
 
 
   </body>
@@ -110,6 +114,10 @@ function canvasSize(e){
 
 }
 
+colorpick.addEventListener("change", checkColor);
+function checkColor(e) {
+  color = event.target.value;
+  };
 
 
   </script>
