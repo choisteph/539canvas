@@ -10,7 +10,7 @@
       </style>
   </head>
   <body>
-    <canvas id="canvas" width="500" height="500">
+    <canvas id="canvas" width="500px" height="500px">
       alt text stuff
       </canvas>
 
@@ -31,6 +31,13 @@
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
     ctx.fill();
   }
+  function touchdraw(){
+    ctx.touchstart();
+    ctx.fillStyle=color;
+    ctx.arc(x,y,radius, 0,2*Math.PI);
+    ctx.fill();
+  }
+
   window.addEventListener('mousemove', function (e) {
     x = e.pageX
     y = e.pageY
@@ -98,5 +105,11 @@ function clearCanvas(e){
   }
 }
 
+window.addEventListener("resize", canvasSize);
+function canvasSize(e){
+  c.width = window.innerWidth;
+  c.height = window.innerHeight;
+
+}
   </script>
 </html>
