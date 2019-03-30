@@ -31,7 +31,7 @@
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
     ctx.fill();
   }
-  function touchdraw(){
+  function touchDraw(){
     ctx.touchstart();
     ctx.fillStyle=color;
     ctx.arc(x,y,radius, 0,2*Math.PI);
@@ -45,14 +45,8 @@
     // console.log(e.pageY);
     draw();
   })
-  // window.addEventListener("keyup", function(e){
-  //   console.log(e.keyCode);
-  //   if (keyCode = 66){
-  //     color = "blue";}
-  //     draw();
-  // }, false)
-window.addEventListener("keydown", colorChange);
 
+window.addEventListener("keydown", colorChange);
 function colorChange(e){
   if (e.keyCode===66){
     console.log("blue");
@@ -107,9 +101,15 @@ function clearCanvas(e){
 
 window.addEventListener("resize", canvasSize);
 function canvasSize(e){
-  c.width = window.innerWidth;
-  c.height = window.innerHeight;
+  c.width = window.innerWidth*0.80;
+  c.height = window.innerHeight*0.80;
 
 }
+
+window.addEventListener("touchmove", touchDraw);
+
+
+
+
   </script>
 </html>
