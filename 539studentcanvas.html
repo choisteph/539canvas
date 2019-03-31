@@ -10,15 +10,22 @@
       canvas:hover{
         cursor: crosshair;
       }
+      label{
+        font-family: arial;
+      }
+      p{
+        font-family: arial;
+      }
       </style>
   </head>
   <body>
     <canvas id="canvas" width="800px" height="500px">
       the canvas
       </canvas>
+    <p> B for Blue / G for Green / Y for Yellow / R for Red / + for Size up / - for Size down / Spacebar for clear </p>
     <div>
     <input type="color" id="colorpick" value="#f8f8f8">
-    <label>the colorpicker</label>
+    <label>Color Picker - Choose the color you want</label>
   </div>
 
 
@@ -30,7 +37,6 @@
   var y = 0
   var color = "red"
   var radius = 20;
-  // draw();
 
   function draw(){
     ctx.beginPath();
@@ -39,22 +45,26 @@
     ctx.fill();
   }
 
-window.addEventListener('mousemove', function (e) {
+window.addEventListener('mousemove', mouseTrace);
+function mouseTrace(e) {
     x = e.pageX
     y = e.pageY
     // console.log(e.pageX);
     // console.log(e.pageY);
     draw();
-})
+    // keep updating the x and y to the pageX and pageY (mousemove stuff)
+};
 
 window.addEventListener("touchmove", touchDraw);
 function touchDraw(e){
+  console.log("touch drawing")
+  // console.log(e.touches[0])
   x = e.touches[0].clientX;
   y = e.touches[0].clientY;
   draw();
-}
-
-
+  // from dictionary of touch information, make the X position the clientX
+  // from the dictionary of touch information, make the Y position the clientY
+};
 
 window.addEventListener("keydown", colorChange);
 function colorChange(e){
@@ -78,47 +88,59 @@ function colorChange(e){
     color="green";
     draw();
   };
+  // if the event's keycode's value is any of the above keys, change color to red and draw
 }
 
 window.addEventListener("keydown", sizeChange);
 
 function sizeChange(e){
   if (e.keyCode===38){
+    console.log("size up")
     radius = radius + 5;
     if (radius >= 50){
       radius = 50;
       alert("max size");
     }
     draw();
+    // if the event keydown keycode value is +, add to the radius size until 50px.
+    //for values at or above 50, keep the radius as 50 and send an alert to say you reached max size.
   };
 
   if (e.keyCode===40){
+    console.log("size down")
     radius = radius - 3;
     if (radius <= 2){
       radius = 2;
       alert ("min size");
     }
     draw();
+    // if the event keydown keycode value is -, subtract from the radius size until 2px.
+    //for values at or below 2, keep the radius as 2 and send an alert to say you reached min size.
   };
-}
+};
 
 window.addEventListener("keydown", clearCanvas);
 function clearCanvas(e){
   if (e.keyCode===32){
+    console.log("clear")
     ctx.clearRect(0,0, canvas.width, canvas.height);
   }
-}
+  //if the spacebar is pressed, make a clear rectangle starting at positon (0,0) and make it as big as the canvas width and canvas height
+};
 
 window.addEventListener("resize", canvasSize);
 function canvasSize(e){
+  console.log("successfully resized")
   c.width = window.innerWidth*0.7;
   c.height = window.innerHeight*0.7;
-
+//if the canvas is resized, make the canvas width equal to 70% of the innerWidth of window and canvas height equal to 70% of the innerHeight of the canvas
 }
 
 colorpick.addEventListener("change", checkColor);
 function checkColor(e) {
+  console.log("color changed")
   color = event.target.value;
+  // pay attention to the colorpicker: if there's a change, change the color to the target value of the colorpicker
   };
 
 
